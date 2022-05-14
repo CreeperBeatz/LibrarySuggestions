@@ -24,5 +24,13 @@ namespace LibraryWPF.DAL
             _libraryContext.Books.Add(book);
             _libraryContext.SaveChanges();
         }
+
+        public IEnumerable<Book> BooksByAuthor(Author author)
+        {
+            var query = from book in _libraryContext.Books 
+                        where book.Authors.Contains(author)
+                        select book;
+            return query;
+        }
     }
 }

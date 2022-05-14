@@ -10,7 +10,7 @@ namespace LibraryWPF.MVVM.Model.DB
     public class Book
     {
         [Key]
-        public int MagazineId { get; set; }
+        public int BookId { get; set; }
         public string Title { get; set; }
 #nullable enable
         public List<Author> Authors { get; set; }
