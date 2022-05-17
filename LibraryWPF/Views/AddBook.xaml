@@ -14,7 +14,7 @@
         <Label Content="Book title"/>
         <TextBox Padding="15" Text="{Binding BookName, UpdateSourceTrigger=PropertyChanged}"/>
         <Label Content="Authors (separated by comma)"/>
-        <TextBox/>
+        <TextBox Text="{Binding Authors, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Margin="10" Padding="15" Command="{Binding AddBookCommand}" Content="Add Book"/>
     </StackPanel>
 </Window>

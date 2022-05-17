@@ -19,7 +19,7 @@ namespace LibraryWPF.ViewModels
 
         public ICommand AddBookCommand { get; set; }
         public string BookName { get { return _bookName; } set { _bookName = value; OnPropertyChanged(); } }
-        public string Author { get { return _authors; } set { _authors = value; OnPropertyChanged(); } }
+        public string Authors { get { return _authors; } set { _authors = value; OnPropertyChanged(); } }
 
         public AddBookVM()
         {
