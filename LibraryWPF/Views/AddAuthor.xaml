@@ -6,10 +6,13 @@
         xmlns:local="clr-namespace:LibraryWPF.Views"
         xmlns:vm="clr-namespace:LibraryWPF.ViewModels"
         d:DataContext="{d:DesignInstance Type=vm:AddAuthorVM}"
-        
         mc:Ignorable="d"
-        Title="AddAuthor" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AddAuthor" Height="250" Width="400">
+    <Window.DataContext>
+        <vm:AddAuthorVM/>
+    </Window.DataContext>
+    <StackPanel Margin="15">
+        <TextBox Padding="15" Text="{Binding AuthorName, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Padding="15" Command="{Binding AddAuthorCommand}" Content="Add Author"/>
+    </StackPanel>
 </Window>

@@ -23,5 +23,14 @@ namespace LibraryWPF.DAL
             _libraryContext.Authors.Add(author);
             _libraryContext.SaveChanges();
         }
+
+        public bool AuthorExists(Author author)
+        {
+            //TODO delete
+            var allrecords = _libraryContext.Authors.ToList();
+
+            var Author = _libraryContext.Authors.FirstOrDefault(x => x.Name == author.Name);
+            return Author != null;
+        }
     }
 }

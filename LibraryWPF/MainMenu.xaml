@@ -8,9 +8,12 @@
         d:DataContext="{d:DesignInstance Type=vm:MainMenuVM}"
         mc:Ignorable="d"
         Title="MainWindow" Height="250" Width="400">
+    <Window.DataContext>
+        <vm:MainMenuVM/>
+    </Window.DataContext>
     <StackPanel>
-        <Button x:Name="AuthorButton" Content="Add Author" Margin="10" Padding="10" FontSize="18"/>
-        <Button x:Name="BookButton" Content="Add Book" Margin="10" Padding="10" FontSize="18"/>
-        <Button x:Name="SearchButton" Content="Search Books By Author" Margin="10" Padding="10" FontSize="18"/>
+        <Button x:Name="AuthorButton" Command="{Binding OpenAuthorCommand}" Content="Add Author" Margin="10" Padding="10" FontSize="18"/>
+        <Button x:Name="BookButton" Command="{Binding OpenBookCommand}" Content="Add Book" Margin="10" Padding="10" FontSize="18"/>
+        <Button x:Name="SearchButton" Command ="{Binding OpenSearchCommand}" Content="Search Books By Author" Margin="10" Padding="10" FontSize="18"/>
     </StackPanel>
 </Window>

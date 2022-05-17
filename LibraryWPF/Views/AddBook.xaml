@@ -4,9 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryWPF.Views"
+        xmlns:vm="clr-namespace:LibraryWPF.ViewModels"
         mc:Ignorable="d"
-        Title="AddBook" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AddBook" Height="250" Width="400">
+    <Window.DataContext>
+        <vm:AddBookVM/>
+    </Window.DataContext>
+    <StackPanel Margin="15">
+        <Label Content="Book title"/>
+        <TextBox Padding="15" Text="{Binding BookName, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Content="Authors (separated by comma)"/>
+        <TextBox/>
+        <Button Margin="10" Padding="15" Command="{Binding AddBookCommand}" Content="Add Book"/>
+    </StackPanel>
 </Window>

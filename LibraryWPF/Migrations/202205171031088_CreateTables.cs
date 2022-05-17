@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDb : DbMigration
+    public partial class CreateTables : DbMigration
     {
         public override void Up()
         {
@@ -12,11 +12,12 @@
                 c => new
                     {
                         AuthorId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(maxLength: 150),
                         Book_BookId = c.Int(),
                     })
                 .PrimaryKey(t => t.AuthorId)
                 .ForeignKey("dbo.Books", t => t.Book_BookId)
+                .Index(t => t.Name, unique: true)
                 .Index(t => t.Book_BookId);
             
             CreateTable(
@@ -34,6 +35,7 @@
         {
             DropForeignKey("dbo.Authors", "Book_BookId", "dbo.Books");
             DropIndex("dbo.Authors", new[] { "Book_BookId" });
+            DropIndex("dbo.Authors", new[] { "Name" });
             DropTable("dbo.Books");
             DropTable("dbo.Authors");
         }

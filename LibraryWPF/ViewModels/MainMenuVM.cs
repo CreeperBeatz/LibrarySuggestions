@@ -8,18 +8,42 @@ using LibraryWPF.Model.DB;
 using LibraryWPF.Utils;
 using System.Windows.Input;
 using LibraryWPF.ViewModels.Commands;
+using LibraryWPF.Views;
+using System.Windows;
 
 namespace LibraryWPF.ViewModels
 {
-    public class MainMenuVM : ObservableObject//, IViewModelSuggestions
+    public class MainMenuVM : ObservableObject, IViewModel
     {
         private IViewModel _currentViewModel;
+        private IViewModel _currentViewModelParent;
         public ICommand OpenAuthorCommand {get; set;}
         public ICommand OpenBookCommand { get; set;}
         public ICommand OpenSearchCommand { get; set;}
 
+        public IViewModel CurrentViewModel
+        {
+            get => _currentViewModel;
+            set
+            {
+                _currentViewModel = value;
+                OnPropertyChanged();
+            }
+        }
+        public IViewModel CurrentViewModelParent
+        {
+            get => _currentViewModelParent;
+            set
+            {
+                _currentViewModelParent = value;
+                OnPropertyChanged();
+            }
+        }
+
         public MainMenuVM()
         {
+            CurrentViewModel = this;
+            CurrentViewModelParent = this;
             this.OpenAuthorCommand = new OpenAuthorCommand(this);
             this.OpenBookCommand = new OpenBookCommand(this);
             this.OpenSearchCommand = new OpenSearchCommand(this);
@@ -27,17 +51,20 @@ namespace LibraryWPF.ViewModels
 
         public void OpenAuthor()
         {
-            //TODO open author add window
+            AddAuthor addAuthor = new AddAuthor();
+            addAuthor.Show();
         }
 
         public void OpenBook()
         {
-            //TODO open book add menu
+            AddBook addBook = new AddBook();
+            addBook.Show();
         }
 
         public void OpenSearch()
         {
-            //TODO open search menu
+            SearchAuthor searchAuthor = new SearchAuthor();
+            searchAuthor.Show();
         }
 
     }

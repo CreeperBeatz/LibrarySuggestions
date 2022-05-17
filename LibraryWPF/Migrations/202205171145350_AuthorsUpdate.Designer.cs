@@ -7,18 +7,18 @@ namespace LibraryWPF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CreateDb : IMigrationMetadata
+    public sealed partial class AuthorsUpdate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AuthorsUpdate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202205141004362_CreateDb"; }
+            get { return "202205171145350_AuthorsUpdate"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

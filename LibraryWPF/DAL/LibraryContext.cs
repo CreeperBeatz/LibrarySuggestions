@@ -11,7 +11,8 @@ namespace LibraryWPF.DAL
 {
     public class LibraryContext : DbContext
     {
-        public LibraryContext() : base("LibraryWPFDb")
+
+        public LibraryContext() : base("data source=.\\SQLEXPRESS; initial catalog=LibrarySystem; integrated security=SSPI")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<LibraryContext, Configuration>());
         }
