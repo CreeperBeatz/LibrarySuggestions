@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LibraryWPF.MVVM.Model.DB;
+using LibraryWPF.Model.DB;
 using LibraryWPF.Migrations;
 
 namespace LibraryWPF.DAL

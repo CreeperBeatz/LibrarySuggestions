@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryWPF.MVVM.Model.DB
+namespace LibraryWPF.Model.DB
 {
     public class Author
     {
@@ -24,7 +24,7 @@ namespace LibraryWPF.MVVM.Model.DB
 
         public Author()
         {
-            Name = "Default";
+            //Name = "Default";
         }
     }
 }

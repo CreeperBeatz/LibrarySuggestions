@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
-using LibraryWPF.MVVM.Model.DB;
+using LibraryWPF.Model.DB;
 using LibraryWPF.Utils;
 
 namespace LibraryWPF.DAL
@@ -25,12 +25,18 @@ namespace LibraryWPF.DAL
             _libraryContext.SaveChanges();
         }
 
-        public IEnumerable<Book> BooksByAuthor(Author author)
+        public bool BookExists(Book book)
         {
-            var query = from book in _libraryContext.Books 
-                        where book.Authors.Contains(author)
+            return _libraryContext.Books.Any(x => x.Title == book.Title);
+        }
+
+        public IEnumerable<Book> BooksByAuthor(string authorName)
+        {
+            var query = from book in _libraryContext.Books.Include(m => m.Authors) 
+                        where book.Authors.Any(author => author.Name == authorName)
                         select book;
-            return query;
+
+            return query.ToList();
         }
     }
 }

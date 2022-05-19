@@ -14,10 +14,10 @@
         <Label Content="Author name"/>
         <TextBox Text="{Binding AuthorName, UpdateSourceTrigger=PropertyChanged}"/> <!--change with suggestbox-->
         <Button Content="Search" Command="{Binding SearchCommand}"  Margin="100, 0, 100, 0"/>
-        <DataGrid Height="169">
+        <DataGrid Height="169" ItemsSource="{Binding SearchResults}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="AuthorName" />
-                <DataGridTextColumn Header="BookName"/>
+                <DataGridTextColumn Header="AuthorName" Binding="{Binding Key}"/>
+                <DataGridTextColumn Header="BookName" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
         

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
-using LibraryWPF.MVVM.Model.DB;
+using LibraryWPF.Model.DB;
 using LibraryWPF.Utils;
 
 namespace LibraryWPF.DAL
@@ -26,9 +26,6 @@ namespace LibraryWPF.DAL
 
         public bool AuthorExists(Author author)
         {
-            //TODO delete
-            var allrecords = _libraryContext.Authors.ToList();
-
             var Author = _libraryContext.Authors.FirstOrDefault(x => x.Name == author.Name);
             return Author != null;
         }

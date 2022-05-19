@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using LibraryWPF.MVVM.Model.DB;
+using LibraryWPF.Model.DB;
 using Microsoft.Win32;
 
 namespace LibraryWPF.Converter

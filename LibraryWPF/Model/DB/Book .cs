@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryWPF.MVVM.Model.DB
+namespace LibraryWPF.Model.DB
 {
     public class Book
     {
@@ -19,6 +19,11 @@ namespace LibraryWPF.MVVM.Model.DB
         {
             Title = title;
             Authors = authors;
+        }
+
+        public Book()
+        {
+
         }
 
     }

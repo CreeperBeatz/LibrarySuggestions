@@ -11,7 +11,7 @@ using LibraryWPF.Utils;
 using LibraryWPF.ViewModels.Commands;
 using LibraryWPF.Model;
 using System.Windows;
-using LibraryWPF.MVVM.Model.DB;
+using LibraryWPF.Model.DB;
 
 namespace LibraryWPF.ViewModels
 {
