@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using LibraryWPF.Model.DB;
+using LibraryWPF.Model;
 using Microsoft.Win32;
 
 namespace LibraryWPF.Converter
@@ -30,10 +31,11 @@ namespace LibraryWPF.Converter
             if (parameter == null) return value;
             if (parameter is not KeyValuePair<object, string> field) return null;
             if (field.Key == null || field.Value == null) return null;
-            if (field.Key.GetType().Name == "String") return value;
-            object obj = field.Key;
+            if (field.Key.GetType().Name.ToLower() == "string") return value;
+            var obj = field.Key;
             PropertyInfo propertyInfo = obj.GetType().GetProperty(field.Value);
-            propertyInfo.SetValue(obj, member, null);
+            propertyInfo.SetValue(obj, value: member, null);
+            
             return obj;
         }
     }

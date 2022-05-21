@@ -16,8 +16,8 @@
         <controls:SuggestTextBox
             Items="{Binding Suggestions}"
             ValueMember="{Binding AuthorPair}"
-            AutoSuggest="{Binding BestSuggestion.Name}"
-            Placeholder="Name"
+            AutoSuggest="{Binding BestSuggestion}"
+            Placeholder="Author Name"
             Text="{Binding SuggestionEntry, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <Button Content="Search" Command="{Binding SearchCommand}"  Margin="100, 0, 100, 0"/>
         <DataGrid Height="169" ItemsSource="{Binding SearchResults}" AutoGenerateColumns="False">
@@ -26,7 +26,5 @@
                 <DataGridTextColumn Header="BookName" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-
     </StackPanel>
 </Window>

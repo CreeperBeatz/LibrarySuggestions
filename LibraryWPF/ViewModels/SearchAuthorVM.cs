@@ -58,7 +58,7 @@ namespace LibraryWPF.ViewModels
                     return;
                 }
                 var _first = _suggestions.First();
-                BestSuggestion = SuggestionEntry?.Name?.Length >= 1 ? _first.Name : string.Empty;
+                BestSuggestion = SuggestionEntry?.Name?.Length >= 3 ? _first.Name : string.Empty;
             }
         }
         public KeyValuePair<object, string> AuthorPair
@@ -118,7 +118,7 @@ namespace LibraryWPF.ViewModels
             _allSuggestions = _suggestionFileManager.GetSuggestions();
             SuggestionEntry = new AuthorSearchSuggestion();
             Suggestions ??= new List<AuthorSearchSuggestion>();
-            AuthorPair = new KeyValuePair<object, string>(_suggestionEntry, "AuthorName");
+            AuthorPair = new KeyValuePair<object, string>(_suggestionEntry, "Name");
             CurrentViewModelParent = this;
             CurrentViewModel = null;
             SearchCommand = new SearchCommand(this);
@@ -127,13 +127,20 @@ namespace LibraryWPF.ViewModels
             CycleSuggestionCommand = new CycleSuggestionCommand(this);
         }
 
+        public bool CanExecute()
+        {
+            return SuggestionEntry != null
+                && !string.IsNullOrEmpty(SuggestionEntry.Name);
+        }
+
         public void Search()
         {
             this.SearchResults.Clear();
-
+            this._suggestionFileManager.AddSuggestion(new AuthorSearchSuggestion(SuggestionEntry.Name)); // add suggestion
+            this.Suggestions.Add(SuggestionEntry);
             StringBuilder authors = new StringBuilder();
 
-            foreach(var book in this._bookService.BooksByAuthor(AuthorName)){
+            foreach(var book in this._bookService.BooksByAuthor(SuggestionEntry.Name)){
                 authors.Clear(); //reset string builder
                 foreach(var author in book.Authors)
                 {
