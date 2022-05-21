@@ -118,9 +118,9 @@ namespace LibraryWPF.ViewModels
             _allSuggestions = _suggestionFileManager.GetSuggestions();
             SuggestionEntry = new AuthorSearchSuggestion();
             Suggestions ??= new List<AuthorSearchSuggestion>();
-            AuthorPair = new KeyValuePair<object, string>(_suggestionEntry, "AuthorName");
+            AuthorPair = new KeyValuePair<object, string>(_suggestionEntry, "Name");
             CurrentViewModelParent = this;
-            CurrentViewModel = this;
+            CurrentViewModel = null;
             SearchCommand = new SearchCommand(this);
             SearchResults = new ObservableCollection<KeyValuePair<string, string>>();
             _bookService = new BookService(new LibraryContext());
@@ -136,10 +136,11 @@ namespace LibraryWPF.ViewModels
         public void Search()
         {
             this.SearchResults.Clear();
-
+            this._suggestionFileManager.AddSuggestion(new AuthorSearchSuggestion(SuggestionEntry.Name)); // add suggestion
+            this.Suggestions.Add(SuggestionEntry);
             StringBuilder authors = new StringBuilder();
 
-            foreach(var book in this._bookService.BooksByAuthor(AuthorName)){
+            foreach(var book in this._bookService.BooksByAuthor(SuggestionEntry.Name)){
                 authors.Clear(); //reset string builder
                 foreach(var author in book.Authors)
                 {

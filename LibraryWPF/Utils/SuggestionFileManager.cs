@@ -18,6 +18,8 @@ namespace LibraryWPF.Utils
             List<AuthorSearchSuggestion> suggestions = new List<AuthorSearchSuggestion>();
             foreach (var line in lines)
             {
+                if (line == String.Empty)
+                    continue;
                 var uls = new AuthorSearchSuggestion(line);
                 suggestions.Add(uls);
             }
@@ -31,7 +33,7 @@ namespace LibraryWPF.Utils
             foreach (var suggestion in suggestions)
             {
                 sb.Append(suggestion.Name);
-                sb.Append("\n");
+                sb.Append("\n\n");
             }
             File.WriteAllText(filename, Cryptography.Encrypt(sb.ToString(), "yolo123"));
         }

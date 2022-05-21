@@ -11,14 +11,13 @@
     <Window.DataContext>
         <vm:SearchAuthorVM/>
     </Window.DataContext>
-    <UserControl>
     <StackPanel>
         <Label Content="Author name"/>
         <controls:SuggestTextBox
             Items="{Binding Suggestions}"
             ValueMember="{Binding AuthorPair}"
             AutoSuggest="{Binding BestSuggestion}"
-            Placeholder="Name"
+            Placeholder="Author Name"
             Text="{Binding SuggestionEntry, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <Button Content="Search" Command="{Binding SearchCommand}"  Margin="100, 0, 100, 0"/>
         <DataGrid Height="169" ItemsSource="{Binding SearchResults}" AutoGenerateColumns="False">
@@ -27,8 +26,5 @@
                 <DataGridTextColumn Header="BookName" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-
     </StackPanel>
-    </UserControl>
 </Window>
