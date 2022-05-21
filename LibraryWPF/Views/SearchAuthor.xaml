@@ -11,12 +11,13 @@
     <Window.DataContext>
         <vm:SearchAuthorVM/>
     </Window.DataContext>
+    <UserControl>
     <StackPanel>
         <Label Content="Author name"/>
         <controls:SuggestTextBox
             Items="{Binding Suggestions}"
             ValueMember="{Binding AuthorPair}"
-            AutoSuggest="{Binding BestSuggestion.Name}"
+            AutoSuggest="{Binding BestSuggestion}"
             Placeholder="Name"
             Text="{Binding SuggestionEntry, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <Button Content="Search" Command="{Binding SearchCommand}"  Margin="100, 0, 100, 0"/>
@@ -29,4 +30,5 @@
         
 
     </StackPanel>
+    </UserControl>
 </Window>

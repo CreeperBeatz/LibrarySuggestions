@@ -58,7 +58,7 @@ namespace LibraryWPF.ViewModels
                     return;
                 }
                 var _first = _suggestions.First();
-                BestSuggestion = SuggestionEntry?.Name?.Length >= 1 ? _first.Name : string.Empty;
+                BestSuggestion = SuggestionEntry?.Name?.Length >= 3 ? _first.Name : string.Empty;
             }
         }
         public KeyValuePair<object, string> AuthorPair
@@ -120,11 +120,17 @@ namespace LibraryWPF.ViewModels
             Suggestions ??= new List<AuthorSearchSuggestion>();
             AuthorPair = new KeyValuePair<object, string>(_suggestionEntry, "AuthorName");
             CurrentViewModelParent = this;
-            CurrentViewModel = null;
+            CurrentViewModel = this;
             SearchCommand = new SearchCommand(this);
             SearchResults = new ObservableCollection<KeyValuePair<string, string>>();
             _bookService = new BookService(new LibraryContext());
             CycleSuggestionCommand = new CycleSuggestionCommand(this);
+        }
+
+        public bool CanExecute()
+        {
+            return SuggestionEntry != null
+                && !string.IsNullOrEmpty(SuggestionEntry.Name);
         }
 
         public void Search()

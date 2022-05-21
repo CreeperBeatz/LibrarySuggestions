@@ -30,10 +30,10 @@ namespace LibraryWPF.Converter
             if (parameter == null) return value;
             if (parameter is not KeyValuePair<object, string> field) return null;
             if (field.Key == null || field.Value == null) return null;
-            if (field.Key.GetType().Name == "String") return value;
-            object obj = field.Key;
+            if (field.Key.GetType().Name.ToLower() == "string") return value;
+            object obj = field;
             PropertyInfo propertyInfo = obj.GetType().GetProperty(field.Value);
-            propertyInfo.SetValue(obj, member, null);
+            propertyInfo.SetValue(obj, value: member, null);
             return obj;
         }
     }
