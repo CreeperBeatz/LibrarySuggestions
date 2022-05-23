@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="bin\Debug\authordata.dat" />
     <None Include="bin\Debug\net6.0-windows\authordata.dat" />
   </ItemGroup>
 

@@ -136,8 +136,8 @@ namespace LibraryWPF.ViewModels
         public void Search()
         {
             this.SearchResults.Clear();
-            this._suggestionFileManager.AddSuggestion(new AuthorSearchSuggestion(SuggestionEntry.Name)); // add suggestion
-            this.Suggestions.Add(SuggestionEntry);
+            this._suggestionFileManager.AddSuggestion(SuggestionEntry); // add suggestion
+            //this.Suggestions.Add(SuggestionEntry);
             StringBuilder authors = new StringBuilder();
 
             foreach(var book in this._bookService.BooksByAuthor(SuggestionEntry.Name)){
