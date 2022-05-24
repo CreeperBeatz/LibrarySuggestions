@@ -13,7 +13,7 @@ namespace LibraryWPF.Utils
         private const string filename = "authordata.dat";
         public List<AuthorSearchSuggestion> GetSuggestions()
         {
-            var data = Cryptography.Decrypt(File.ReadAllText(filename), "yolo123");
+            var data = Cryptography.Decrypt(File.ReadAllText(filename));
             var lines = data.Split('\n');
             List<AuthorSearchSuggestion> suggestions = new List<AuthorSearchSuggestion>();
             foreach (var line in lines)
@@ -33,9 +33,9 @@ namespace LibraryWPF.Utils
             foreach (var suggestion in suggestions)
             {
                 sb.Append(suggestion.Name);
-                sb.Append("\n\n");
+                sb.Append("\n");
             }
-            File.WriteAllText(filename, Cryptography.Encrypt(sb.ToString(), "yolo123"));
+            File.WriteAllText(filename, Cryptography.Encrypt(sb.ToString()));
         }
 
         public void AddSuggestion(AuthorSearchSuggestion suggestion)

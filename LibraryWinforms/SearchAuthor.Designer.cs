@@ -31,8 +31,8 @@ namespace LibraryWinforms
         private void InitializeComponent()
         {
             this.searchButton = new System.Windows.Forms.Button();
-            this.authorTextBox = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.suggestionBoxWrapper1 = new LibraryWinforms.SuggestionBoxUserControl.SuggestionBoxWrapper();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,14 +46,6 @@ namespace LibraryWinforms
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // authorTextBox
-            // 
-            this.authorTextBox.Location = new System.Drawing.Point(12, 11);
-            this.authorTextBox.Name = "authorTextBox";
-            this.authorTextBox.Size = new System.Drawing.Size(251, 27);
-            this.authorTextBox.TabIndex = 1;
-            this.authorTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeight = 29;
@@ -64,26 +56,33 @@ namespace LibraryWinforms
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
+            // suggestionBoxWrapper1
+            // 
+            this.suggestionBoxWrapper1.Location = new System.Drawing.Point(12, 12);
+            this.suggestionBoxWrapper1.Name = "suggestionBoxWrapper1";
+            this.suggestionBoxWrapper1.Size = new System.Drawing.Size(255, 47);
+            this.suggestionBoxWrapper1.TabIndex = 3;
+            this.suggestionBoxWrapper1.Load += new System.EventHandler(this.suggestionBoxWrapper1_Load);
+            // 
             // SearchAuthor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.suggestionBoxWrapper1);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.authorTextBox);
             this.Controls.Add(this.searchButton);
             this.Name = "SearchAuthor";
             this.Text = "SearchAuthor";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private Button searchButton;
-        private TextBox authorTextBox;
         private DataGridView dataGridView;
+        private SuggestionBoxUserControl.SuggestionBoxWrapper suggestionBoxWrapper1;
     }
 }

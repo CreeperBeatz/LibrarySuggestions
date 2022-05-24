@@ -136,7 +136,6 @@ namespace LibraryWPF.ViewModels
         public void Search()
         {
             this.SearchResults.Clear();
-            this._suggestionFileManager.AddSuggestion(SuggestionEntry); // add suggestion
             //this.Suggestions.Add(SuggestionEntry);
             StringBuilder authors = new StringBuilder();
 
@@ -151,6 +150,11 @@ namespace LibraryWPF.ViewModels
 
 
                 this.SearchResults.Add(new KeyValuePair<string, string>(authors.ToString(), book.Title));
+            }
+
+            if (SearchResults.Count > 0)
+            {
+                this._suggestionFileManager.AddSuggestion(SuggestionEntry); // add suggestion
             }
         }
 

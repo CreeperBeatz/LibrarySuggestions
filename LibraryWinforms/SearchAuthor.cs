@@ -25,8 +25,15 @@ namespace LibraryWinforms
 
         private void PerformBindings()
         {
-            authorTextBox.DataBindings.Add("Text", vm, nameof(vm.SuggestionEntry), false, DataSourceUpdateMode.OnPropertyChanged);
+            //Bind for AuthorSearchVM
+            suggestionBoxWrapper1.PerformBindings(vm,
+                                                  "AuthorName",
+                                                  nameof(vm.BestSuggestion),
+                                                  nameof(vm.SuggestionEntry),
+                                                  nameof(vm.AuthorPair),
+                                                  nameof(vm.Suggestions));
 
+            //Bind search button
             searchButton.Click += (sender, e) => { vm.Search(); LoadDataGrid(); };
         }
 
@@ -63,5 +70,10 @@ namespace LibraryWinforms
 
         }
         #endregion
+
+        private void suggestionBoxWrapper1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
