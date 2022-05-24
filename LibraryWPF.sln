@@ -5,7 +5,10 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWPF", "LibraryWPF\LibraryWPF.csproj", "{63BBBD9C-B39B-4C77-A006-6C5811EE83C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryWinforms", "LibraryWinforms\LibraryWinforms.csproj", "{D1D43834-2D2B-47D6-BEA6-794A0B030AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryWinforms", "LibraryWinforms\LibraryWinforms.csproj", "{D1D43834-2D2B-47D6-BEA6-794A0B030AD8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{63BBBD9C-B39B-4C77-A006-6C5811EE83C4} = {63BBBD9C-B39B-4C77-A006-6C5811EE83C4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
