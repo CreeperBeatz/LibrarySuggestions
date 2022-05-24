@@ -154,7 +154,8 @@ namespace LibraryWPF.ViewModels
 
             if (SearchResults.Count > 0)
             {
-                this._suggestionFileManager.AddSuggestion(SuggestionEntry); // add suggestion
+                _suggestionFileManager.AddSuggestion(SuggestionEntry); // add suggestion
+                _allSuggestions = _suggestionFileManager.GetSuggestions();
             }
         }
 
