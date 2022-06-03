@@ -161,17 +161,6 @@ namespace LibraryWPF.ViewModels
 
         public void ExecuteCycleSuggestions(object parameter)
         {
-            /*
-            if (!_suggestions.Any()) return;
-            int index = SuggestionIndex + int.Parse((string)parameter);
-            index = index % Math.Min(5, _suggestions.Count); //HARD CODED, replace 5 with settings
-            IsCycling = true;
-            if (index < 0)
-                index = _suggestions.Count - 1;
-            SuggestionEntry = _suggestions[index];
-            SuggestionIndex = index;
-            BestSuggestion = _suggestions[index];
-            */
         }
     }
 }
