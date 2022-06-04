@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using LibraryWPF.Core;
 
-namespace LibraryWPF.ViewModels
+namespace LibraryWPF.Interfaces
 {
-    public interface IViewModelSuggestions : IViewModel
+    public interface IViewModelSuggestions
     {
         public ICommand CycleSuggestionCommand { get; set; }
         public int SuggestionIndex { get; set; }

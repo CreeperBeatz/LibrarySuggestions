@@ -11,6 +11,7 @@ using LibraryWPF.DAL;
 using System.Windows.Input;
 using LibraryWPF.ViewModels.Commands;
 using System.Collections.ObjectModel;
+using LibraryWPF.Interfaces;
 
 namespace LibraryWPF.ViewModels
 {
@@ -25,9 +26,6 @@ namespace LibraryWPF.ViewModels
         private KeyValuePair<object, string> _authorPair;
         private string _bestSuggestion;
         private AuthorSearchSuggestion _suggestionEntry;
-        //private AuthorSearchSuggestion _selectedAuthor;
-        private IViewModel _currentViewModel;
-        private IViewModel _currentViewModelParent;
         #endregion
 
         #region PublicProperties
@@ -96,20 +94,6 @@ namespace LibraryWPF.ViewModels
             }
         }
         public ObservableCollection<KeyValuePair<string, string>> SearchResults { get; set; }
-        public IViewModel CurrentViewModel
-        {
-            get => _currentViewModel;
-            set
-            {
-                _currentViewModel = value;
-                OnPropertyChanged();
-            }
-        }
-        public IViewModel CurrentViewModelParent
-        {
-            get => _currentViewModelParent;
-            set { _currentViewModelParent = value; OnPropertyChanged(); }
-        }
         #endregion
 
         public SearchAuthorVM()
@@ -119,8 +103,6 @@ namespace LibraryWPF.ViewModels
             SuggestionEntry = new AuthorSearchSuggestion();
             Suggestions ??= new List<AuthorSearchSuggestion>();
             AuthorPair = new KeyValuePair<object, string>(_suggestionEntry, "Name");
-            CurrentViewModelParent = this;
-            CurrentViewModel = null;
             SearchCommand = new SearchCommand(this);
             SearchResults = new ObservableCollection<KeyValuePair<string, string>>();
             _bookService = new BookService(new LibraryContext());
