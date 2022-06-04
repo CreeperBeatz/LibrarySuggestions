@@ -17,7 +17,7 @@ namespace LibraryWinforms
 
         public SearchAuthor()
         {
-            this.vm = new SearchAuthorVM();
+            vm = new SearchAuthorVM();
             InitializeComponent();
             PerformBindings();
             LoadDataGrid();
@@ -25,13 +25,8 @@ namespace LibraryWinforms
 
         private void PerformBindings()
         {
-            //Bind for AuthorSearchVM
-            suggestionBoxWrapper1.PerformBindings(vm,
-                                                  "AuthorName",
-                                                  nameof(vm.BestSuggestion),
-                                                  nameof(vm.SuggestionEntry),
-                                                  nameof(vm.AuthorPair),
-                                                  nameof(vm.Suggestions));
+            //Bind SuggestBox
+            suggestionBoxWrapper1.PerformBindings(vm.AuthorSuggestBox, "Author Name");
 
             //Bind search button
             searchButton.Click += (sender, e) => { vm.Search(); LoadDataGrid(); };

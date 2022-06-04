@@ -8,7 +8,8 @@ using LibraryWPF.Core;
 namespace LibraryWPF.SuggestBoxHelpers
 {
     /// <summary>
-    /// Class for storing a single String value as a suggestion
+    /// Class for storing a single String value as a suggestion.
+    /// Other classes use t
     /// </summary>
     public class SuggestionBase : ObservableObject
     {

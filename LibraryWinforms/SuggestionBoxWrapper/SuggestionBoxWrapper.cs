@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Forms.Integration;
 using LibraryWPF.Core;
-using LibraryWPF.ViewModels;
+using LibraryWPF.SuggestBoxHelpers;
 using LibraryWPF.Controls;
 using System.Windows;
 
@@ -35,12 +35,7 @@ namespace LibraryWinforms.SuggestionBoxUserControl
         }
 
         
-        public void PerformBindings(ObservableObject viewModel,
-                                    string placeholderText,
-                                    string autoSuggestPropertyName,
-                                    string textPropertyName,
-                                    string valueMemberPropertyName,
-                                    string itemsPropertyName)
+        public void PerformBindings(SuggestBoxCB suggestBox, string placeholderText)
         {
             //Remove any objects that are in the UserControl
             this.Controls.Remove(host);
@@ -51,29 +46,29 @@ namespace LibraryWinforms.SuggestionBoxUserControl
             suggestTextBox.SetBinding(SuggestTextBox.AutoSuggestProperty, new System.Windows.Data.Binding()
             {
                 Mode = BindingMode.TwoWay,
-                Source = viewModel,
-                Path = new PropertyPath(autoSuggestPropertyName)
+                Source = suggestBox,
+                Path = new PropertyPath(nameof(suggestBox.BestSuggestion))
             });
 
             suggestTextBox.SetBinding(SuggestTextBox.TextProperty, new System.Windows.Data.Binding()
             {
                 Mode = BindingMode.TwoWay,
-                Source = viewModel,
-                Path = new PropertyPath(textPropertyName)
+                Source = suggestBox,
+                Path = new PropertyPath(nameof(suggestBox.SuggestionEntry))
             });
 
             suggestTextBox.SetBinding(SuggestTextBox.ValueMemberProperty, new System.Windows.Data.Binding()
             {
                 Mode = BindingMode.TwoWay,
-                Source = viewModel,
-                Path = new PropertyPath(valueMemberPropertyName)
+                Source = suggestBox,
+                Path = new PropertyPath(nameof(suggestBox.SuggestionPair))
             });
 
             suggestTextBox.SetBinding(SuggestTextBox.ItemsProperty, new System.Windows.Data.Binding()
             {
                 Mode = BindingMode.TwoWay,
-                Source = viewModel,
-                Path = new PropertyPath(itemsPropertyName)
+                Source = suggestBox,
+                Path = new PropertyPath(nameof(suggestBox.Suggestions))
             });
 
 
