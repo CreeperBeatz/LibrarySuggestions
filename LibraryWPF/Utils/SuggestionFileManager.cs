@@ -5,49 +5,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryWPF.Model;
+using LibraryWPF.SuggestBoxHelpers;
 
 namespace LibraryWPF.Utils
 {
     public class SuggestionFileManager
     {
-        private const string filename = "authordata.dat";
-        public List<AuthorSearchSuggestion> GetSuggestions()
+        private string _filePath;
+        public List<SuggestionBase> GetSuggestions()
         {
-            var data = File.ReadAllText(filename);
+            var data = File.ReadAllText(_filePath);
             var lines = data.Split('\n');
-            List<AuthorSearchSuggestion> suggestions = new List<AuthorSearchSuggestion>();
+            List<SuggestionBase> suggestions = new List<SuggestionBase>();
             foreach (var line in lines)
             {
                 if (line == String.Empty)
                     continue;
-                var uls = new AuthorSearchSuggestion(line);
+                var uls = new SuggestionBase(line);
                 suggestions.Add(uls);
             }
 
             return suggestions;
         }
 
-        public void SetSuggestions(List<AuthorSearchSuggestion> suggestions)
+        public void SetSuggestions(List<SuggestionBase> suggestions)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var suggestion in suggestions)
             {
-                sb.Append(suggestion.Name);
+                sb.Append(suggestion.Suggestion);
                 sb.Append("\n");
             }
-            File.WriteAllText(filename, sb.ToString());
+            File.WriteAllText(_filePath, sb.ToString());
         }
 
-        public void AddSuggestion(AuthorSearchSuggestion suggestion)
+        public void AddSuggestion(SuggestionBase suggestion)
         {
-            var list = GetSuggestions() ?? new List<AuthorSearchSuggestion>();
+            var list = GetSuggestions() ?? new List<SuggestionBase>();
             if (!list.Contains(suggestion))
                 list.Add(suggestion);
             SetSuggestions(list);
         }
 
-        public SuggestionFileManager()
+        public SuggestionFileManager(string filePath)
         {
+            _filePath = filePath;
         }
     }
 }

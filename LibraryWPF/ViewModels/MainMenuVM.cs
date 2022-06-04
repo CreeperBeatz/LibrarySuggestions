@@ -13,37 +13,13 @@ using System.Windows;
 
 namespace LibraryWPF.ViewModels
 {
-    public class MainMenuVM : ObservableObject, IViewModel
+    public class MainMenuVM : ObservableObject
     {
-        private IViewModel _currentViewModel;
-        private IViewModel _currentViewModelParent;
         public ICommand OpenAuthorCommand {get; set;}
         public ICommand OpenBookCommand { get; set;}
         public ICommand OpenSearchCommand { get; set;}
-
-        public IViewModel CurrentViewModel
-        {
-            get => _currentViewModel;
-            set
-            {
-                _currentViewModel = value;
-                OnPropertyChanged();
-            }
-        }
-        public IViewModel CurrentViewModelParent
-        {
-            get => _currentViewModelParent;
-            set
-            {
-                _currentViewModelParent = value;
-                OnPropertyChanged();
-            }
-        }
-
         public MainMenuVM()
         {
-            CurrentViewModel = this;
-            CurrentViewModelParent = this;
             this.OpenAuthorCommand = new OpenAuthorCommand(this);
             this.OpenBookCommand = new OpenBookCommand(this);
             this.OpenSearchCommand = new OpenSearchCommand(this);
