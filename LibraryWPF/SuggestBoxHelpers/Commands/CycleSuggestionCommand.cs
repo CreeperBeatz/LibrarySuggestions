@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Input;
 
-namespace LibraryWPF.ViewModels.Commands
+namespace LibraryWPF.SuggestBoxHelpers.Commands
 {
     public class CycleSuggestionCommand : ICommand
     {

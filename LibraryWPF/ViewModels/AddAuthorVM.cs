@@ -12,10 +12,11 @@ using LibraryWPF.ViewModels.Commands;
 using LibraryWPF.Model;
 using System.Windows;
 using LibraryWPF.Model.DB;
+using LibraryWPF.SuggestBoxHelpers;
 
 namespace LibraryWPF.ViewModels
 {
-    public class AddAuthorVM : ObservableObject//, IViewModelSuggestions
+    public class AddAuthorVM : ObservableObject
     {
         private string _authorName;
         private AuthorService _authorService;
@@ -28,7 +29,7 @@ namespace LibraryWPF.ViewModels
         public AddAuthorVM()
         {
             this.AddAuthorCommand = new AddAuthorCommand(this);
-            this._suggestionFileManager = new SuggestionFileManager();
+            this._suggestionFileManager = new SuggestionFileManager("authordata.dat"); //FIXME filepath currently hardcoded
             this._authorService = new AuthorService(new LibraryContext());
         }
 
@@ -45,20 +46,13 @@ namespace LibraryWPF.ViewModels
                 else
                 {
                     this._authorService.AddAuthor(author);
-                    this._suggestionFileManager.AddSuggestion(new AuthorSearchSuggestion(AuthorName));
+                    this._suggestionFileManager.AddSuggestion(new SuggestionBase(AuthorName));
                     MessageBox.Show("Succesfully inserted Author!");
                     this.AuthorName = "";
                 }
             } catch {
                 MessageBox.Show("Error Occured");
             }
-            //TODO add author to DB
-            //TODO add author name to suggestions on success 
-        }
-
-        private void AddSuggestion(AuthorSearchSuggestion suggestion)
-        {
-            _suggestionFileManager.AddSuggestion(suggestion);
         }
     }
 }

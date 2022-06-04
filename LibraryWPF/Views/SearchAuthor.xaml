@@ -14,11 +14,11 @@
     <StackPanel>
         <Label Content="Author name"/>
         <controls:SuggestTextBox
-            Items="{Binding Suggestions}"
-            ValueMember="{Binding AuthorPair}"
-            AutoSuggest="{Binding BestSuggestion}"
+            Items="{Binding AuthorSuggestBox.Suggestions}"
+            ValueMember="{Binding AuthorSuggestBox.SuggestionPair}"
+            AutoSuggest="{Binding AuthorSuggestBox.BestSuggestion}"
             Placeholder="Author Name"
-            Text="{Binding SuggestionEntry, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            Text="{Binding AuthorSuggestBox.SuggestionEntry, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <Button Content="Search" Command="{Binding SearchCommand}"  Margin="100, 0, 100, 0"/>
         <DataGrid Height="169" ItemsSource="{Binding SearchResults}" AutoGenerateColumns="False">
             <DataGrid.Columns>
