@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LibraryWPF.Core;
 using LibraryWPF.Model.DB;
 using LibraryWPF.Model;
 using LibraryWPF.Utils;
@@ -11,8 +10,8 @@ using LibraryWPF.DAL;
 using System.Windows.Input;
 using LibraryWPF.ViewModels.Commands;
 using System.Collections.ObjectModel;
-using LibraryWPF.Interfaces;
 using LibraryWPF.SuggestBoxHelpers;
+using LibraryWPF.Core;
 
 namespace LibraryWPF.ViewModels
 {
@@ -20,7 +19,6 @@ namespace LibraryWPF.ViewModels
     {
         #region PrivateProperties
         private BookService _bookService;
-        private readonly SuggestionFileManager _suggestionFileManager;
         #endregion
 
         #region PublicProperties

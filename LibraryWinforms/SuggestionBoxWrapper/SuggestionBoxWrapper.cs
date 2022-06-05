@@ -24,18 +24,12 @@ namespace LibraryWinforms.SuggestionBoxUserControl
         public SuggestionBoxWrapper()
         {
             InitializeComponent();
-        }
-
-        private void SuggestionBoxWrapper_Load_1(object sender, EventArgs e)
-        {
-            //Add unbinded SuggestionBox
             host.Dock = DockStyle.Fill;
             host.Child = suggestTextBox;
             this.Controls.Add(host);
         }
-
         
-        public void PerformBindings(SuggestBoxCB suggestBox, string placeholderText)
+        public void PerformBindings(SuggestBoxCB suggestBox, string placeholderText="")
         {
             //Remove any objects that are in the UserControl
             this.Controls.Remove(host);
@@ -75,6 +69,10 @@ namespace LibraryWinforms.SuggestionBoxUserControl
             //add the binded SuggestBox to the WinForms control
             host.Child = suggestTextBox;
             this.Controls.Add(host);
+        }
+
+        private void SuggestionBoxWrapper_Load_1(object sender, EventArgs e)
+        {
         }
     }
 }
